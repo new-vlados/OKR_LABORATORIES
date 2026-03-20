@@ -1,18 +1,15 @@
-/* Універсальний селектор: задаємо базовий шрифт для всього сайту */
 * {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Селектор тегу: стилізація тіла сторінки (фон, колір тексту) */
 body {
     background-color: #f4f4f9;
     color: #333;
     padding: 20px;
 }
 
-/* Селектор тегу: налаштування заголовків */
 h1 {
     color: #004080;
     text-align: center;
@@ -27,14 +24,12 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* Селектор тегу: форматування абзаців (відступ першого рядка, інтервал) */
 p {
     line-height: 1.6;
     margin-bottom: 15px;
     text-indent: 20px;
 }
 
-/* Селектор класу: стилізація панелі навігації */
 .nav-menu {
     text-align: center;
     background-color: #e6f2ff;
@@ -50,24 +45,21 @@ p {
     margin: 0 15px;
 }
 
-/* Псевдоклас: зміна кольору посилання при наведенні курсору */
 .nav-menu a:hover {
     color: #ff4500;
     text-decoration: underline;
 }
 
-/* Селектор ідентифікатора (ID): унікальне оформлення конкретного елемента */
 #highlight-text {
     font-style: italic;
     font-weight: bold;
     color: #2e8b57;
 }
 
-/* Стилізація таблиці */
 table.styled-table {
     width: 80%;
     margin: 20px auto;
-    border-collapse: collapse; /* Прибирає подвійні рамки */
+    border-collapse: collapse;
     background-color: #fff;
 }
 
@@ -84,12 +76,11 @@ table.styled-table td {
     text-align: center;
 }
 
-/* Стилізація списків */
 ul {
-    list-style-type: square; /* Зміна маркера */
-    background-color: #e8f4f8; /* Фон для списку */
-    padding: 15px 15px 15px 40px; /* Поля та заповнення */
-    border-left: 4px solid #0066cc; /* Межа зліва */
+    list-style-type: square;
+    background-color: #e8f4f8;
+    padding: 15px 15px 15px 40px;
+    border-left: 4px solid #0066cc;
     margin: 10px 0;
 }
 
