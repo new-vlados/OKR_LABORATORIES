@@ -6,7 +6,7 @@
     <title>Настільний теніс - Інвентар</title>
 </head>
 <body bgcolor="#ffffe6">
-    <h1>Інвентар</h1>
+    <h1>Інвентар та Таблиці</h1>
     <nav>
         <a href="index.html">Головна</a> |
         <a href="rules.html">Правила</a> |
@@ -17,21 +17,56 @@
 
     <p>Основним інвентарем є ракетка, м'яч та стіл. Нижче наведено орієнтовну таблицю характеристик.</p>
 
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
-            <th colspan="3">Характеристики інвентарю</th>
+    <table border="1" width="100%" cellspacing="0" cellpadding="5">
+        <caption>Базові елементи гри (Проста таблиця)</caption>
+        <tr bgcolor="#cccccc">
+            <th>Колонка 1</th>
+            <th>Колонка 2</th>
+            <th>Колонка 3</th>
+            <th>Колонка 4</th>
         </tr>
-        <tr>
-            <th>Елемент</th>
-            <th>Матеріал</th>
-            <th>Стандарт</th>
+        <tr align="center">
+            <td><img src="pingpong.jpg" width="60" alt="Теніс"></td>
+            <td><img src="pingpong.jpg" width="60" alt="Теніс"></td>
+            <td><img src="pingpong.jpg" width="60" alt="Теніс"></td>
+            <td><img src="pingpong.jpg" width="60" alt="Теніс"></td>
         </tr>
-        <tr>
+        <tr align="center">
+            <td><a href="rules.html">Правила</a></td>
+            <td><a href="techniques.html">Техніка</a></td>
+            <td><a href="index.html">Головна сторінка</a></td>
+            <td><a href="https://www.ittf.com" target="_blank">ITTF</a></td>
+        </tr>
+        <tr align="center">
+            <td>Опис елементу 1</td>
+            <td>Опис елементу 2</td>
+            <td>Опис елементу 3</td>
+            <td>Опис елементу 4</td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <table border="1" cellspacing="4" cellpadding="10" width="100%">
+        <caption>Характеристики інвентарю (Складна таблиця)</caption>
+        <colgroup>
+            <col style="background-color: #ffdddd;">
+            <col span="2" style="background-color: #ddffdd;">
+        </colgroup>
+        <tr align="center">
+            <th rowspan="2">Категорія інвентарю</th>
+            <th colspan="2">Детальні характеристики</th>
+        </tr>
+        <tr align="center">
+            <th>Матеріал виготовлення</th>
+            <th>Офіційний стандарт</th>
+        </tr>
+        <tr align="left">
             <td>М'яч</td>
             <td>Пластик</td>
             <td>Діаметр 40+ мм, вага 2.7 г</td>
         </tr>
-        <tr>
+        <tr align="right">
             <td>Стіл</td>
             <td>ДСП/МДФ</td>
             <td>Довжина 2.74 м, ширина 1.525 м</td>
