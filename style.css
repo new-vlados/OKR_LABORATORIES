@@ -1,18 +1,19 @@
-/* Універсальний селектор: задаємо базовий шрифт для всього сайту */
+/* Базові стилі */
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Селектор тегу: стилізація тіла сторінки (фон, колір тексту) */
 body {
     background-color: #f4f4f9;
     color: #333;
     padding: 20px;
+    max-width: 900px; /* Обмежуємо ширину для зручності читання */
+    margin: 0 auto; /* Центруємо сайт */
 }
 
-/* Селектор тегу: налаштування заголовків */
 h1 {
     color: #004080;
     text-align: center;
@@ -23,52 +24,85 @@ h1 {
 
 h2 {
     color: #0066cc;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
-/* Селектор тегу: форматування абзаців (відступ першого рядка, інтервал) */
 p {
     line-height: 1.6;
     margin-bottom: 15px;
-    text-indent: 20px;
 }
 
-/* Селектор класу: стилізація панелі навігації */
+/* =========================================
+   ВИМОГА 1: Дочірній селектор (Child selector: parent > child) 
+   ========================================= */
+/* Застосовується ТІЛЬКИ до прямих нащадків <a> всередині .nav-menu */
+.nav-menu > a {
+    text-decoration: none;
+    color: #004080;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-menu > a:hover {
+    color: white;
+    background-color: #ff4500;
+}
+
 .nav-menu {
     text-align: center;
     background-color: #e6f2ff;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.nav-menu a {
+/* =========================================
+   ВИМОГА 2: Сусідній селектор (Adjacent sibling selector: element + element) 
+   ========================================= */
+/* Стилізує абзац <p>, який йде ОДРАЗУ після заголовка <h2> (наприклад, у правилах подачі) */
+h2 + p {
+    border-left: 4px solid #ff4500;
+    padding-left: 12px;
+    font-weight: 500;
+    background-color: #fffaf0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 0 4px 4px 0;
+}
+
+/* =========================================
+   ВИМОГА 3: Контекстний селектор (Descendant selector: ancestor descendant) 
+   ========================================= */
+/* Стилізує всі теги <i>, які знаходяться БУДЬ-ДЕ всередині <dd> в списку <dl> (сторінка "Техніка") */
+dl dd i {
+    color: #d2691e;
+    font-weight: bold;
+}
+
+/* Стилізує всі посилання <a> всередині елементів списку <li> */
+ul li a {
+    color: #0066cc;
     text-decoration: none;
-    color: #004080;
-    font-weight: bold;
-    margin: 0 15px;
+    border-bottom: 1px dashed #0066cc;
 }
 
-/* Псевдоклас: зміна кольору посилання при наведенні курсору */
-.nav-menu a:hover {
+ul li a:hover {
     color: #ff4500;
-    text-decoration: underline;
+    border-bottom-color: #ff4500;
 }
 
-/* Селектор ідентифікатора (ID): унікальне оформлення конкретного елемента */
-#highlight-text {
-    font-style: italic;
-    font-weight: bold;
-    color: #2e8b57;
-}
-
-/* Стилізація таблиці */
+/* Інші стилі для краси */
 table.styled-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse; /* Прибирає подвійні рамки */
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
     background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 table.styled-table th {
@@ -79,22 +113,43 @@ table.styled-table th {
 }
 
 table.styled-table td {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     text-align: center;
 }
 
-/* Стилізація списків */
 ul {
-    list-style-type: square; /* Зміна маркера */
-    background-color: #e8f4f8; /* Фон для списку */
-    padding: 15px 15px 15px 40px; /* Поля та заповнення */
-    border-left: 4px solid #0066cc; /* Межа зліва */
-    margin: 10px 0;
+    list-style-type: square;
+    background-color: #e8f4f8;
+    padding: 15px 15px 15px 40px;
+    border-left: 4px solid #0066cc;
+    margin: 15px 0;
+    border-radius: 0 4px 4px 0;
 }
 
-ul li {
+ul > li {
     font-size: 16px;
     color: #003366;
     margin-bottom: 8px;
+}
+
+#highlight-text {
+    font-style: italic;
+    color: #2e8b57;
+    background-color: #e8f8f5;
+    border-left: 5px solid #2e8b57;
+    padding: 15px;
+    border-radius: 0 4px 4px 0;
+}
+
+dl dt {
+    font-size: 1.1em;
+    color: #004080;
+    margin-top: 15px;
+}
+
+dl dd {
+    margin-bottom: 10px;
+    margin-left: 20px;
+    color: #444;
 }
