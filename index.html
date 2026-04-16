@@ -5,6 +5,7 @@
     <meta name="author" content="Новохатський Владислав">
     <title>Настільний теніс - Головна</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Настільний теніс: Головна сторінка</h1>
@@ -30,7 +31,7 @@
     </div>
 
     <div class="relative-container content-box">
-        <span class="absolute-badge">Цікаво!</span>
+        <span class="absolute-badge" id="fact-badge">Цікаво!</span>
         
         <h2>Популярні асоціації та факти</h2>
         <ul class="styled-list">
@@ -39,5 +40,23 @@
             <li>Швидкість м'яча під час професійного удару (смешу) може перевищувати 100 км/год.</li>
         </ul>
     </div>
+
+    <script>
+        // Використання document.write (додаємо футер)
+        document.write('<footer style="text-align: center; margin-top: 30px; padding-top: 10px; border-top: 1px solid #ccc; color: #666;"><small>Сайт про настільний теніс. Всі права захищені.</small></footer>');
+
+        // Функції alert, prompt, confirm
+        window.addEventListener('load', () => {
+            // Невелика затримка, щоб сторінка встигла відрендеритись
+            setTimeout(() => {
+                if(confirm("Вітаємо на нашому сайті! Бажаєте оцінити свій рівень гри?")) {
+                    let level = prompt("Оцініть свій рівень гри від 1 до 10:", "5");
+                    if(level) {
+                        alert(`Ваш рівень: ${level}. Продовжуйте тренування та ставайте кращими!`);
+                    }
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
