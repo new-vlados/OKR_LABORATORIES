@@ -114,5 +114,90 @@ document.addEventListener("DOMContentLoaded", () => {
             alert(`Довідка: ${tooltipText}`);
         }
     });
+    // 1. Події mouseover/mouseout та властивості event.target, event.relatedTarget
+    const galleryContainer = document.getElementById('equipment-gallery');
+    
+    if (galleryContainer) {
+        galleryContainer.addEventListener('mouseover', function(event) {
+            // event.target - елемент, на який ми навели
+            let targetCard = event.target.closest('.gallery-item');
+            
+            if (!targetCard) return; // Якщо навели не на картку
+            
+            // event.relatedTarget - елемент, з якого прийшов курсор
+            let related = event.relatedTarget;
+            
+            // Змінюємо стилі
+            targetCard.style.borderColor = '#ff4500';
+            targetCard.style.backgroundColor = '#fff5ee';
+            targetCard.style.transform = 'translateY(-5px)';
+            targetCard.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
 
+        galleryContainer.addEventListener('mouseout', function(event) {
+            let targetCard = event.target.closest('.gallery-item');
+            
+            if (!targetCard) return;
+
+            // event.relatedTarget - елемент, на який перейшов курсор
+            let related = event.relatedTarget;
+
+            // Якщо курсор перейшов на дочірній елемент всередині тієї ж картки - ігноруємо
+            if (related && targetCard.contains(related)) return;
+
+            // Повертаємо початкові стилі
+            targetCard.style.borderColor = 'transparent';
+            targetCard.style.backgroundColor = '#e8f4f8';
+            targetCard.style.transform = 'translateY(0)';
+            targetCard.style.boxShadow = 'none';
+        });
+    }
+
+    // 2. Drag-and-drop через події миші (mousedown, mousemove, mouseup)
+    const ball = document.getElementById('ping-pong-ball');
+    const tableContainer = document.getElementById('table-container');
+
+    if (ball && tableContainer) {
+        ball.ondragstart = () => false;
+
+        ball.addEventListener('mousedown', function(event) {
+            // Отримуємо координати відносно вікна браузера (viewport)
+            let ballRect = ball.getBoundingClientRect();
+            let shiftX = event.clientX - ballRect.left;
+            let shiftY = event.clientY - ballRect.top;
+
+            function moveAt(clientX, clientY) {
+                let tableRect = tableContainer.getBoundingClientRect();
+                
+                // Використовуємо clientX/clientY
+                let newLeft = clientX - tableRect.left - shiftX;
+                let newTop = clientY - tableRect.top - shiftY;
+
+                // Межі столу
+                if (newLeft < 0) newLeft = 0;
+                if (newTop < 0) newTop = 0;
+                if (newLeft > tableContainer.offsetWidth - ball.offsetWidth) {
+                    newLeft = tableContainer.offsetWidth - ball.offsetWidth;
+                }
+                if (newTop > tableContainer.offsetHeight - ball.offsetHeight) {
+                    newTop = tableContainer.offsetHeight - ball.offsetHeight;
+                }
+
+                ball.style.left = newLeft + 'px';
+                ball.style.top = newTop + 'px';
+            }
+
+            function onMouseMove(event) {
+                //передаємо clientX та clientY
+                moveAt(event.clientX, event.clientY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            document.addEventListener('mouseup', function onMouseUp() {
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+            });
+        });
+    }
 });
